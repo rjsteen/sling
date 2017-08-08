@@ -1,7 +1,8 @@
 const initialState = {
   channel: null,
   currentRoom: {},
-  messages: [], // new line
+  messages: [],
+  presentUsers: [], // new line
 };
 
 export default function (state = initialState, action) {
@@ -11,17 +12,22 @@ export default function (state = initialState, action) {
         ...state,
         channel: action.channel,
         currentRoom: action.response.room,
-        messages: action.response.messages.reverse(), // new line
+        messages: action.response.messages.reverse(),
       };
     case 'USER_LEFT_ROOM':
       return initialState;
-    case 'MESSAGE_CREATED': // new case
+    case 'MESSAGE_CREATED':
       return {
         ...state,
         messages: [
           ...state.messages,
           action.message,
         ],
+      };
+    case 'ROOM_PRESENCE_UPDATE': // new case
+      return {
+        ...state,
+        presentUsers: action.presentUsers,
       };
     default:
       return state;
