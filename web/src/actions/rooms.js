@@ -29,4 +29,3 @@ export function joinRoom(roomId, router) {
       router.transitionTo(`/r/${response.data.id}`);
     });
 }
-view raw
