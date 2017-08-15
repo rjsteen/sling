@@ -15,7 +15,8 @@ config :sling, Sling.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "https://fathomless-escarpment-72203.herokuapp.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json",
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  check_origin: ["http://react-sling.s3-website.us-east-2.amazonaws.com"]
 
 # Do not print debug messages in production
 config :logger, level: :info
