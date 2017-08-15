@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
 const s3 = require('s3');
+const AWS = require('aws-sdk'); // https://www.npmjs.com/package/aws-sdk
 require('dotenv').config();
 
+const awsS3Client = new AWS.S3();
 const client = s3.createClient({
+  s3Client: awsS3Client,
   s3Options: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
